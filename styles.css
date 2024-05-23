@@ -11,7 +11,8 @@ body {
     flex-direction: column;
     font-family: "Montserrat", sans-serif;
     font-size: 1rem;
-    width: 100%;
+    width: 100vw;
+    min-width: 300px;
     min-height: 100vh;
     background-color: #f4f4f4;
     padding: 1.5rem;
@@ -31,15 +32,17 @@ h1 {
     align-items: center;
     justify-content: center;
     width: 100%;
+    padding: 1em 0;
     flex-grow: 1;
 }
 
 .calculator {
     display: grid;
     grid-template-rows: max-content repeat(6, 1fr);
+    grid-template-columns: 100%;
     gap: .8em;
     width: 100%;
-    max-width: 385px;
+    max-width: 450px;
     background-color: #fefefe;
     box-shadow: 0 0 12px 8px #d6d6d6;
     padding: 1.3em;
@@ -48,24 +51,21 @@ h1 {
 
 .display-container {
     width: 100%;
-    height: auto;
+    height: max-content;
     display: flex;
     border-bottom: 2px solid #d6d6d6;
 }
 
-.display-container input {
+.display-container p {
     color: #4e4e4e;
     text-align: end;
     font-size: 2em;
+    font-weight: 500;
     width: 100%;
-    padding-bottom: 1.5em;
-    min-height: max-content;
-    background-color: transparent;
-    border: none;
-}
-
-.display-container input:focus {
-    outline: none;
+    min-height: 2em;
+    max-height: 3em;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
 }
 
 /* We select all div children but display */
@@ -95,6 +95,10 @@ h1 {
 
 .calculator div button.function:hover {
     box-shadow: 0 0 15px 0 #3c61d13a;
+}
+
+.calculator div button.function sup {
+    pointer-events: none;
 }
 
 .calculator div button.number {
